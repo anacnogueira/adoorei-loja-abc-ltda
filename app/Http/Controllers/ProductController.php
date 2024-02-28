@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'data' => $this->productRepository->gelAllProducts()
+            'data' => $this->productRepository->getAllProducts()
         ]);
     }
 

@@ -16,6 +16,6 @@ class ProductRepository implements ProductRepositoryInterface
     
     public function getAllProducts()
     {   
-        $this->product->all();
+        return $this->product->all();
     }
 }
