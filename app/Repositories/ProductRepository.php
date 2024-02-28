@@ -9,10 +9,10 @@ class ProductRepository implements ProductRepositoryInterface
 {
     protected $product;
 
-    public function __construct(Product $product) {
+    public function __construct(Product $product)
+    {
         $this->product = $product;
-    }
-    
+    }    
     
     public function getAllProducts()
     {   
