@@ -14,7 +14,7 @@ class SaleRepository implements SaleRepositoryInterface
         $this->sale = $sale;
     }    
     
-    public function getAllProducts()
+    public function getAllSales()
     {   
         return $this->sale->all();
     }

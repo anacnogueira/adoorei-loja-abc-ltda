@@ -17,7 +17,9 @@ class SaleController extends Controller
 
     public function index()
     {
-        //
+        return response()->json([
+            'data' => $this->saleRepository->getAllSales()
+        ]);
     }
 
     /**
