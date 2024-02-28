@@ -26,7 +26,11 @@ class SaleRepository implements SaleRepositoryInterface
 
     public function createSale(array $saleDetails)
     {
-        return $this->sale->create($orderDetails);
+        $sale = $this->sale->create($saleDetails);
+
+        $sale->saleProduct()->createMany($saleDetails['items']); //Erro: resolver
+
+        return $sale;
     }
 
     public function cancelOrder($saleId)

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
+    protected $fillable = ['amount'];
+    public $timestamps = false;    
+    
     public function saleProduct(): BelongsTo
     {
         return $this->belongsTo(SaleProduct::class);

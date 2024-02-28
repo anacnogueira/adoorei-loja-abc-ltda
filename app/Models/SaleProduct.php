@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SaleProduct extends Model
 {
+    public $timestamps = false;
+    
     public function sales(): HasMany
     {
         return $this->hasMany(Sale::class);

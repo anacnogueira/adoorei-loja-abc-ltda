@@ -24,21 +24,21 @@ class StoreSaleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'products' => ['present', 'array'],
-            'products.*.id' => ['required','integer'],
-            'products.*.amount' => ['required','integer'],
+            'items' => ['present', 'array'],
+            'items.*.product_id' => ['required','integer'],
+            'items.*.amount' => ['required','integer'],
         ];
     }
 
     public function messages()
     {
         return [
-            'products.present' => 'Informe o(s) produto(s)',
-            'products.array' => 'Produto(s) deve ser um array',
-            'products.*.id.required' => 'Informe o ID do produto',
-            'products.*.id.integer' => 'O ID do produto dever um número inteiro',
-            'products.*.amount.required' => 'Informe a quantia do produto',
-            'products.*.amount.integer' => 'A quantia do produto deve ser número inteiro',
+            'items.present' => 'Informe o(s) produto(s)',
+            'items.array' => 'Produto(s) deve ser um array',
+            'items.*.product_id.required' => 'Informe o ID do produto',
+            'items.*.product_id.integer' => 'O ID do produto dever um número inteiro',
+            'items.*.amount.required' => 'Informe a quantia do produto',
+            'items.*.amount.integer' => 'A quantia do produto deve ser número inteiro',
         ];
     }
 

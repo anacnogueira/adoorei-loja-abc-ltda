@@ -18,4 +18,9 @@ class ProductRepository implements ProductRepositoryInterface
     {   
         return $this->product->all();
     }
+
+    public function getProductById($productId)
+    {
+        return $this->product->find($productId);
+    }
 }
