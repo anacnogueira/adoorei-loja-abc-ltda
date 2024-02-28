@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\UpdateSaleRequest;
-use App\Models\Sale;
+use App\Interfaces\SaleRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illumkinate\Http\Respose;
 
 class SaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private SaleRepositoryInterface $saleRepository;
+
+    public function __construct(SaleRepositoryInterface $saleRepository)
+    {
+        $this->saleRepository = $saleRepository;
+    }
+
     public function index()
     {
         //
