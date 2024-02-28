@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Interfaces\SaleRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illumkinate\Http\Respose;
+use App\Http\Requests\StoreSaleRequest;
 
 class SaleController extends Controller
 {
@@ -26,18 +27,18 @@ class SaleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSaleRequest $request): JsonResponse 
+    public function store(StoreSaleRequest $request)//: JsonResponse 
     {
-        $saleDetails = $request->only([
-            'products',            
-        ]);
+    //     $saleDetails = $request->only([
+    //         'products',            
+    //     ]);
 
-        return response()->json(
-            [
-                'data' => $this->saleRepository->createSale($saleDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+    //     return response()->json(
+    //         [
+    //             'data' => $this->saleRepository->createSale($saleDetails)
+    //         ],
+    //         Response::HTTP_CREATED
+    //     );
     }
 
     /**
