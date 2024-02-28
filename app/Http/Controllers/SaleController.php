@@ -21,21 +21,23 @@ class SaleController extends Controller
             'data' => $this->saleRepository->getAllSales()
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSaleRequest $request)
+    public function store(StoreSaleRequest $request): JsonResponse 
     {
-        //
+        $saleDetails = $request->only([
+            'products',            
+        ]);
+
+        return response()->json(
+            [
+                'data' => $this->saleRepository->createSale($saleDetails)
+            ],
+            Response::HTTP_CREATED
+        );
     }
 
     /**
@@ -46,13 +48,6 @@ class SaleController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Sale $sale)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -61,12 +56,5 @@ class SaleController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Sale $sale)
-    {
-        //
-    }
+    
 }

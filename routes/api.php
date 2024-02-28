@@ -21,5 +21,6 @@ Route::get('products', [ProductController::class, 'index']);
 
 // Sales
 Route::get('sales', [SaleController::class, 'index']);
+Route::post('sales', [SaleController::class, 'store']);
 
 // Sale Products
