@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SaleProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('sales/{id}', [SaleController::class, 'show']);
 Route::delete('sales/{id}', [SaleController::class, 'destroy']);
 
 // Sale Products
+Route::post('sales/{id}/add-products', [SaleProductController::class, 'store']);
