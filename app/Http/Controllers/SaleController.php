@@ -6,6 +6,7 @@ use App\Interfaces\SaleRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreSaleRequest;
 
 class SaleController extends Controller
@@ -28,12 +29,8 @@ class SaleController extends Controller
             'data' => $this->saleRepository->getAllSales()
         ]);
     }
-    
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSaleRequest $request)//: JsonResponse 
+    public function store(StoreSaleRequest $request): JsonResponse 
     {
                       
         $saleDetails = [];
@@ -57,12 +54,14 @@ class SaleController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Sale $sale)
+
+    public function show(Request $request): JsonResponse 
     {
-        //
+        $saleId = $request->route('id');
+
+        return response()->json([
+            'data' => $this->saleRepository->getSaleById($saleId)
+        ]);
     }
 
 

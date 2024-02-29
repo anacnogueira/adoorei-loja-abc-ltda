@@ -21,21 +21,19 @@ class SaleRepository implements SaleRepositoryInterface
 
     public function getSaleById($saleId)
     {
-        //Implement...
+        return $this->sale->findOrFail($saleId);
     }
 
     public function createSale(array $saleDetails)
     {
-        //\DB::enableQueryLog();
         $sale = $this->sale->create($saleDetails);
 
         $sale->saleProduct()->createMany($saleDetails['items']); //Erro: resolver
-        
-        //dd(\DB::getQueryLog()); 
+
         return $sale;
     }
 
-    public function cancelOrder($saleId)
+    public function deleteSale($saleId)
     {
         //Implement...
     }
