@@ -7,5 +7,5 @@ namespace App\Interfaces;
     public function getAllSales();
     public function getSaleById($saleId);
     public function createSale(array $saleDetails);
-    public function daleteSale($saleId);
+    public function deleteSale($saleId);
  }

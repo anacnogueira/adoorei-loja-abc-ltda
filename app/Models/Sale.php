@@ -15,4 +15,10 @@ class Sale extends Model
     {
         return $this->hasMany(SaleProduct::class);
     }
+
+    public function delete()
+    {
+        $this->saleProduct()->delete();
+        return parent::delete();
+    }
 }

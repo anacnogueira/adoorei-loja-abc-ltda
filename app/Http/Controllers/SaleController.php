@@ -64,13 +64,12 @@ class SaleController extends Controller
         ]);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateSaleRequest $request, Sale $sale)
+    public function destroy(Request $request)
     {
-        //
+        $saleId = $request->route('id');
+        $this->saleRepository->deleteSale($saleId);
+
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
     
 }

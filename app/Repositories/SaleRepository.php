@@ -35,6 +35,6 @@ class SaleRepository implements SaleRepositoryInterface
 
     public function deleteSale($saleId)
     {
-        //Implement...
+        $this->sale->destroy($saleId);
     }
 }
