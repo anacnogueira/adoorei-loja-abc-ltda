@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SaleProduct extends Model
 {
-    public $timestamps = false;
+    protected $fillable = ['product_id','amount'];
+    public $timestamps = false;    
     
-    public function sales(): HasMany
+    public function sales(): BelongsTo
     {
-        return $this->hasMany(Sale::class);
+        return $this->belongsTo(Sale::class);
     }
 
-    public function products(): HasMany
+    public function products(): BelongsTo
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

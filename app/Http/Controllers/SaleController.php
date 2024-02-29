@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Interfaces\SaleRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\JsonResponse;
-use Illumkinate\Http\Respose;
+use Illuminate\Http\Response;
 use App\Http\Requests\StoreSaleRequest;
 
 class SaleController extends Controller
