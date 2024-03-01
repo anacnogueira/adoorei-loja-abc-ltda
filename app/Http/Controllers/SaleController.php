@@ -8,11 +8,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSaleRequest;
+use App\Services\GetAmountFromSale;
 
 class SaleController extends Controller
 {
     private SaleRepositoryInterface $saleRepository;
-    private ProductRepositoryInterface $productRepository;
 
     public function __construct(
         SaleRepositoryInterface $saleRepository,
@@ -21,6 +21,7 @@ class SaleController extends Controller
     {
         $this->saleRepository = $saleRepository;
         $this->productRepository = $productRepository;
+       
     }
 
     public function index()
@@ -31,21 +32,12 @@ class SaleController extends Controller
     }
 
     public function store(StoreSaleRequest $request): JsonResponse 
-    {
-                      
+    {                      
         $saleDetails = [];
-        $saleDetails['amount'] = 0;
         $saleDetails['items'] = $request->items; 
-
-        foreach($request->items as $item) {
-            $product = $this->productRepository->getProductById($item['product_id']);
-            
-            if ($product) {
-                $saleDetails['amount'] += $product->price * $item['amount'];
-            }
-        }
-
-
+        $saleDetails['amount'] = (new GetAmountFromSale($this->productRepository))
+            ->sum($saleDetails['items']);
+       
         return response()->json(
             [
                 'data' => $this->saleRepository->createSale($saleDetails)
