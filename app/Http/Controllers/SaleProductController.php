@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSaleRequest;
+use App\Http\Resources\SaleResource;
 
 class SaleProductController extends Controller
 {
@@ -26,7 +27,7 @@ class SaleProductController extends Controller
   
         return response()->json(
             [
-                'data' => $this->saleProductRepository->addProduct($saleId, $saleDetails)
+                'data' => new SaleResource($this->saleProductRepository->addProduct($saleId, $saleDetails))
             ],
             Response::HTTP_CREATED
         );
