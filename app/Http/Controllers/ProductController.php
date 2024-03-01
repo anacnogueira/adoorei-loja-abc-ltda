@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illumkinate\Http\Respose;
+use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
@@ -19,7 +20,7 @@ class ProductController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'data' => $this->productRepository->getAllProducts()
+            'data' => ProductResource::collection($this->productRepository->getAllProducts())
         ]);
     }
 
