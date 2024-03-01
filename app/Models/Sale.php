@@ -16,6 +16,11 @@ class Sale extends Model
         return $this->hasMany(SaleProduct::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class,'sale_products');
+    }
+
     public function delete()
     {
         $this->saleProduct()->delete();

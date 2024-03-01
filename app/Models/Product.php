@@ -11,4 +11,10 @@ class Product extends Model
     {
         return $this->belongsTo(SaleProduct::class);
     }
+
+
+    public function sales()
+    {
+        return $this->belongsToMany(Sale::class,'sale_products');
+    }
 }

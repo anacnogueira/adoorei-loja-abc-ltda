@@ -21,7 +21,7 @@ class SaleRepository implements SaleRepositoryInterface
 
     public function getSaleById($saleId)
     {
-        return $this->sale->findOrFail($saleId);
+        return $this->sale->with('products')->findOrFail($saleId);
     }
 
     public function createSale(array $saleDetails)
