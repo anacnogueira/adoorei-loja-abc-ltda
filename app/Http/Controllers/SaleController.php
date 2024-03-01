@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSaleRequest;
 use App\Services\GetAmountFromSale;
+use App\Http\Resources\SaleResource;
 
 class SaleController extends Controller
 {
@@ -27,7 +28,7 @@ class SaleController extends Controller
     public function index()
     {
         return response()->json([
-            'data' => $this->saleRepository->getAllSales()
+            'data' => SaleResource::collection($this->saleRepository->getAllSales())
         ]);
     }
 

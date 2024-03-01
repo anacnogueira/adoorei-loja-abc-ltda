@@ -4,9 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\SaleProductResource;
 
-class SaleResource extends JsonResource
+class SaleProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +14,11 @@ class SaleResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'sales_id' => $this->id,
-            'amount' => $this->amount,
-            'products' => SaleProductResource::collection($this->products),
+       return [
+            'product_id' => $this->id,
+            'name' => $this->name,
+            'price' => $this->price,
+            'amount' => $this->pivot->amount,
         ];
     }
 }

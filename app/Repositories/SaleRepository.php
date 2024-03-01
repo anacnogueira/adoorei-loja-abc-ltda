@@ -16,7 +16,12 @@ class SaleRepository implements SaleRepositoryInterface
     
     public function getAllSales()
     {   
-        return $this->sale->all();
+        //\DB::enableQueryLog();
+        
+        
+        return $this->sale->with(['saleProduct'])->get();
+
+        //dd(\DB::getQueryLog());
     }
 
     public function getSaleById($saleId)
