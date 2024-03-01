@@ -41,7 +41,7 @@ class SaleController extends Controller
        
         return response()->json(
             [
-                'data' => $this->saleRepository->createSale($saleDetails)
+                'data' => new SaleResource($this->saleRepository->createSale($saleDetails))
             ],
             Response::HTTP_CREATED
         );
@@ -53,7 +53,7 @@ class SaleController extends Controller
         $saleId = $request->route('id');
 
         return response()->json([
-            'data' => $this->saleRepository->getSaleById($saleId)
+            'data' => new SaleResource($this->saleRepository->getSaleById($saleId))
         ]);
     }
 
