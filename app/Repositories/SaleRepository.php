@@ -15,13 +15,8 @@ class SaleRepository implements SaleRepositoryInterface
     }    
     
     public function getAllSales()
-    {   
-        //\DB::enableQueryLog();
-        
-        
-        return $this->sale->with(['saleProduct'])->get();
-
-        //dd(\DB::getQueryLog());
+    {        
+        return $this->sale->with(['products'])->get();
     }
 
     public function getSaleById($saleId)
@@ -33,7 +28,7 @@ class SaleRepository implements SaleRepositoryInterface
     {
         $sale = $this->sale->create($saleDetails);
 
-        $sale->saleProduct()->createMany($saleDetails['items']); //Erro: resolver
+        $sale->saleProduct()->createMany($saleDetails['items']);
 
         return $sale;
     }
